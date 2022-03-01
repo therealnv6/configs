@@ -1,2 +1,4 @@
 rootProject.name = 'config-api'
 include 'shared'
+include 'config-gson'
+

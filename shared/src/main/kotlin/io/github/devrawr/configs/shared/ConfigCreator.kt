@@ -9,7 +9,7 @@ import io.github.devrawr.configs.shared.naming.NamingScheme
 import io.github.devrawr.configs.shared.naming.type.SnakeCaseNamingScheme
 import io.github.devrawr.configs.shared.util.ObjectInstanceUtil.getOrCreateInstance
 import io.github.devrawr.configs.shared.wrapper.ObjectWrapper
-import io.github.devrawr.configs.shared.wrapper.defaults.createGsonWrapper
+
 import io.github.devrawr.configs.shared.writer.ConfigWriter
 import io.github.devrawr.configs.shared.writer.defaults.JavaConfigWriter
 import java.io.File
@@ -23,6 +23,7 @@ object ConfigCreator
     var writer: ConfigWriter = JavaConfigWriter
 
     var namingScheme: NamingScheme = SnakeCaseNamingScheme
+    var createDefaultWrapper: ((Class<*>) -> ObjectWrapper<*>)? = null
 
     lateinit var fileReader: FileReader
     lateinit var fileWriter: FileWriter
@@ -48,7 +49,9 @@ object ConfigCreator
     fun <T> retrieveWrapper(type: Class<T>): ObjectWrapper<T>
     {
         return (wrappers[type]
-            ?: createGsonWrapper(type)) as ObjectWrapper<T>
+            ?: createDefaultWrapper?.let {
+                it(type)
+            }) as ObjectWrapper<T>
     }
 
     inline fun <reified T : Any> create(

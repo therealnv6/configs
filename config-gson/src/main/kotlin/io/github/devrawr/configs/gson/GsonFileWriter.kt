@@ -1,4 +1,4 @@
-package io.github.devrawr.configs.shared.file.gson
+package io.github.devrawr.configs.gson
 
 import com.google.gson.GsonBuilder
 import io.github.devrawr.configs.shared.file.FileWriter
@@ -7,7 +7,6 @@ import java.nio.file.Files
 
 object GsonFileWriter : FileWriter
 {
-    private val reader = GsonFileReader
     private val gson = GsonBuilder()
         .setPrettyPrinting()
         .create()

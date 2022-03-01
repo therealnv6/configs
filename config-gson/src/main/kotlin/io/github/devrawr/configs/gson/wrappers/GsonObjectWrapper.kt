@@ -1,4 +1,4 @@
-package io.github.devrawr.configs.shared.wrapper.defaults
+package io.github.devrawr.configs.gson.wrappers
 
 import com.google.gson.Gson
 import io.github.devrawr.configs.shared.wrapper.ObjectWrapper

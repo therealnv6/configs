@@ -1,4 +1,4 @@
-package io.github.devrawr.configs.shared.file.gson
+package io.github.devrawr.configs.gson
 
 import com.google.gson.*
 import io.github.devrawr.configs.shared.file.FileReader
