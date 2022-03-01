@@ -43,6 +43,11 @@ object ConfigCreator
 
             this.fileReader = handler.fileReader
             this.fileWriter = handler.fileWriter
+
+            if (handler.namingScheme != null)
+            {
+                this.namingScheme = handler.namingScheme!!
+            }
         }
     }
 
